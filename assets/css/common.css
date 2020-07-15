@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/*
+  Copyright J-LINE CORPORATION. All rights reserved.
+  http://www.j-line.co.jp/
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+html {
+    font-family: "游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Kaku 　Gothic Pro", "メイリオ", "ＭＳ ゴシック", sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+
+body {
+    font-family: "游ゴシック", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Hiragino Kaku 　Gothic Pro", "メイリオ", "ＭＳ ゴシック", sans-serif;
+
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 1.4rem;
+    }
+}
+
+body>main {
+    -ms-overflow-x: hidden;
+}
+
+@supports (-ms-ime-align: auto) {
+    body>main {
+        overflow: hidden;
+    }
+}

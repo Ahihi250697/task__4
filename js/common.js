@@ -1,0 +1,1 @@
+$('.interview-slide').slick();
