@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import 'functions_responsive.scss';
 @font-face {
     font-family: A1MinChoStd;
     font-weight: bold;
@@ -29,15 +30,22 @@ $c-dark-purple: #002554;
     align-items: center;
     position: fixed;
     width: 100%;
-    min-height: 6rem;
+    height: 8rem;
     padding: 4rem 5.5rem;
     z-index: 1030;
+    @include mobile{
+        height: 6rem;
+        padding: 2rem;
+    }
     h1{
         font-family: 'Montserrat', sans-serif;
         font-size: 3.6rem;
         margin-right: auto;
         color: white;
         cursor: pointer;
+        @include mobile{
+            font-size: 3rem;
+        }
     }
     button{
         background-color: $c-main-color;
@@ -51,12 +59,39 @@ $c-dark-purple: #002554;
         margin-right: 3rem;
         text-transform: uppercase;
         transition: all .4s ease;
+        @include mobile{
+            width: 8rem;
+            font-size: 1.4rem;
+            height: 3rem;
+            margin-right: 2rem;
+        }
     }
     button:hover{
         background-color: white;
         color: $c-main-color;
     }
 }
+/* ============
+        hambuger
+ ============*/
+ .sub-menu{
+    display: none;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    .container{
+        width: 100%;
+        display: flex;
+        margin: auto;
+    }
+ }
+ .sub-menu.active{
+    display: flex;
+ }
 /* ============
         hambuger
  ============*/
@@ -106,6 +141,9 @@ $c-dark-purple: #002554;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    @include ipadpro{
+        height: 65rem;
+    }
     &--title{
         display: block;
         position: absolute;
@@ -117,6 +155,12 @@ $c-dark-purple: #002554;
         font-weight: bold;
         font-family: A1MinChoStd;
         color: white;
+        @include ipadpro{
+            font-size: 6rem;
+        }
+        @include mobile{
+            font-size: 3rem;
+        }
     }
 }
 /* ============
@@ -126,17 +170,20 @@ $c-dark-purple: #002554;
     width: 100%;
     background-color: white;
     .p-rel{
-        min-height: 21rem;
+        min-height: 20rem;
     }
     .title{
         width: 100%;
         position: absolute;
-        min-height: 30rem;
+        min-height: 35.5rem;
         background-color: white;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        bottom: 0;
         padding-top: 5rem;
-        text-align: center; 
+        text-align: center;
+        @include mobile{
+            padding-top: 2rem;
+            min-height: 22rem;
+        }
         h2{
             font-family: 'Crimson Text', serif;
             text-transform: uppercase;
@@ -150,28 +197,46 @@ $c-dark-purple: #002554;
                 display: block;
                 color: $c-gray;
             }
+            @include mobile{
+                font-size: 3rem;
+            }
         }
         p{
             font-size: 2rem;
             font-weight: bold;
+            @include mobile{
+                font-size: 1.4rem;
+            }
         }
     }
     .project{
         display: flex;
+        @include mobile{
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
         &-item{
             width: 100%;
             overflow: hidden;
             position: relative;
             img{
                 width: 100%;
+                position: relative;
+                @include mobile{
+                    max-height: 40rem;
+                    object-fit: cover;
+                }
             }
-            .l-mask{
+            .l-mask::after{
+                content: '';
                 position: absolute;
                 top: 0;
+                left:0;
                 width: 100%;
                 height: 100%;
                 background-color: rgba($c-main-color, .8);
             }
+
             .w-abs{
                 position: absolute;
                 top: 50%;
@@ -217,6 +282,9 @@ $c-dark-purple: #002554;
  ============*/
 .year-100{
     padding: 10rem 0;
+    @include mobile{
+        padding: 4rem 2rem;
+    }
     .p-rel{
         text-align: center;
         img{
@@ -229,18 +297,32 @@ $c-dark-purple: #002554;
             position: absolute;
             text-align: center;
             letter-spacing: .2rem;
+            @include mobile{
+                position: relative;
+                transform: translateY(0);
+                color: #333333;
+                margin-top: 2rem;
+            }
         }
         span:nth-of-type(1){
             top: 35%;
             transform: translateY(-35%);
             font-size: 4.5rem;
             font-family: A1MinChoStd;
+            @include mobile{
+                transform: translateY(0);
+                font-size: 2.5rem;
+            }
         }
         span:nth-of-type(2){
             bottom: 25%;
             transform: translateY(-25%);
             font-size: 2rem;
             font-family: 'Crimson Text', serif;
+            @include mobile{
+                transform: translateY(0);
+                font-size: 1.4rem;
+            }
         }
         a{
             text-decoration: none;
@@ -250,15 +332,29 @@ $c-dark-purple: #002554;
             position: absolute;
             bottom: 4rem;
             right: 4rem;
+            @include mobile{
+                position: relative;
+                border-bottom: .2rem solid $c-main-color;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                display: block;
+                padding-bottom: .6rem;
+                margin-top: 4rem;
+                color: #666666;
+            }
         }
         a:after{
-            content: '';
+            @media only screen and (min-width: 769px){
+                content: '';
+            }
             position: absolute;
             width: 3rem;
             height: .2rem;
             background-color: white;
             top:-3rem;
             left:0;
+
         }
     }
 }
@@ -270,10 +366,23 @@ $c-dark-purple: #002554;
     min-height: 65rem;
     position: relative;
     margin-bottom: 8rem;
+    display: block;
+    @include ipadpro{
+        min-height: 47rem;
+        margin-bottom: 4rem;
+    }
+    @include mobile{
+        min-height: 30rem;
+    }
     .w-box{
         width: 100%;
         display: flex;
         position: relative;
+        @include mobile{
+            flex-wrap: wrap;
+            padding: 0 2rem;
+            flex-direction: column-reverse;
+        }
         .under-bg{
             max-width: 112rem;
             height: 40rem;
@@ -283,12 +392,18 @@ $c-dark-purple: #002554;
             right: 0;
             bottom: -10rem;
             margin: 0 auto;
+            @include mobile{
+                height: 20rem;
+            }
         }
         &-l{
             width: 100%;
             max-width: 65%;
             max-height: 48rem;
             overflow: hidden;
+            @include mobile{
+                max-width: 100%;
+            }
             img{
                 width: 100%;
             }
@@ -297,12 +412,22 @@ $c-dark-purple: #002554;
             width: 100%;
             max-width: 35%;
             display: flex;
+            @include mobile{
+                max-width: 100%;
+            }
             h2{
                 font-family: 'Crimson Text', serif;
                 font-size: 8rem;
                 color: $c-main-color;
                 text-transform: uppercase;
                 margin: auto 0;
+                @include ipadpro{
+                    font-size: 6rem;
+                }
+                @include mobile{
+                    font-size: 3rem;
+                    margin-bottom: 1rem;
+                }
             }
         }  
     }
@@ -313,6 +438,13 @@ $c-dark-purple: #002554;
         color: white;
         border: .1rem solid $c-dark-purple;
         font-size: 1.6rem;
+        @include mobile{
+            width: auto;
+            font-size:1.4rem;
+            position: static;
+            margin: 1rem 2rem;
+            // height: 6rem;
+        }
     }
     .rect-more-info::after{
         border-color: white;
@@ -325,11 +457,19 @@ $c-dark-purple: #002554;
     .w-box{
         &-r{
             padding-left: 4rem;
-            padding-right: 4rem;
+            padding-right: 6rem;
+            @include mobile{
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     }
     .rect-more-info{
         right: 10rem;
+        @include mobile{
+            right:0;
+            left: 0;
+        }
     }
     .rect-more-info:nth-of-type(1){
         bottom:13rem;
@@ -351,12 +491,20 @@ $c-dark-purple: #002554;
         &-r{
             padding-left: 10rem;
             padding-right: 10rem;
+            @include mobile{
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     }
     .rect-more-info{
         left: 0;
         margin-left: 10rem;
         bottom: 13rem;
+        @include mobile{
+            bottom: 0;
+            margin: 1rem 2rem;
+        }
     }
 }
 .under-bg{
@@ -375,6 +523,13 @@ $c-dark-purple: #002554;
     padding-left: 3.5rem;
     padding-right: 3.5rem;
     position: relative;
+    @include ipadpro{
+        height: 6rem;
+    }
+    @include mobile{
+        max-width: 100%;
+        padding-left: 2rem;
+    }
 }
 .rect-more-info::after{
     content: '';
@@ -386,6 +541,10 @@ $c-dark-purple: #002554;
     transform: skew(45deg);
     right: 0;
     margin-right: 4rem;
+    @include mobile{
+        width: 2rem;
+        height: .8rem;
+    }
 }
 /* ============
         interview
@@ -402,6 +561,9 @@ $c-dark-purple: #002554;
         left: 0;
         margin: auto 0;
         z-index:-1;
+        @include mobile{
+            margin: 3rem 0;
+        }
     }
     .w-flex{
         .w-flex-middle{
@@ -409,6 +571,9 @@ $c-dark-purple: #002554;
             display: flex;
             flex-wrap: wrap;
             align-items: flex-end;
+            @include mobile{
+                min-height: 1rem;
+            }
             span, p{
                 display: block;
                 width: 100%;
@@ -416,11 +581,18 @@ $c-dark-purple: #002554;
             span{
                 color: #666666;
                 font-size: 1.6rem;
+                @include mobile{
+                    font-size: 1.4rem;
+                    margin: 1rem 0;
+                }
             }
             p{
                 font-size: 2.4rem;
                 font-weight: bold;
                 color: #333333;
+                @include mobile{
+                    font-size: 1.6rem;
+                }
             }
             h2{
                 font-size: 8rem;
@@ -428,6 +600,9 @@ $c-dark-purple: #002554;
                 text-transform: uppercase;
                 font-family: 'Crimson Text', serif;
                 margin-bottom: 1rem;
+                @include mobile{
+                    font-size: 3rem;
+                }
             }
             .interview-more{
                 color: $c-main-color;
@@ -455,6 +630,11 @@ $c-dark-purple: #002554;
                 color: $c-main-color;
                 font-size: 2.4rem;
                 font-weight: bold;
+                @include mobile{
+                    margin: 2rem 0;
+                    font-size: 1.6rem;
+                    border: .1rem solid #e5e5e5;
+                }
             }
             .rect-more-info::after{
                 border-color: $c-main-color;
@@ -462,6 +642,14 @@ $c-dark-purple: #002554;
             .interview-slide{
                 width: 100%;
                 height: 42rem;
+                @include mobile{
+                    min-height: 20rem;
+                    overflow: hidden;
+                    img{
+                        height: 40rem;
+                        object-fit: cover;
+                    }
+                }
                 .slick-arrow{
                     border: .1rem solid $c-main-color;
                     background-color: $c-main-color;
@@ -473,14 +661,20 @@ $c-dark-purple: #002554;
                     position: absolute;
                     right: 0;
                     bottom: 0;
-                    
+                    z-index: 1;
                 }
                 .slick-next{
                     transform: translateX(100%);
+                    @include ipadpro{
+                        transform: translateX(0%);
+                    }
                 }
                 .slick-prev{
                     margin-bottom: .1rem;
                     transform: translate(100%, -100%);
+                    @include ipadpro{
+                        transform: translate(0%, -100%);
+                    }
                 }
                 .slick-prev::after{
                     content: '\f104';
@@ -496,16 +690,27 @@ $c-dark-purple: #002554;
 }
 .w-flex{
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
+    @include ipadpro{
+        padding: 0 2rem;
+    }
+    @include mobile{
+            flex-wrap: wrap;
+        }
     .w-flex-middle{
         width: 100%;
         max-width: 55rem;
+        @include ipadpro{
+            max-width: 49%;
+        }
+        @include mobile{
+            max-width: 100%;
+        }
     }
 }
 /* ============
-        mv
+        special
  ============*/
 .special{
     position: relative;
@@ -518,28 +723,31 @@ $c-dark-purple: #002554;
     position: relative;
     display: flex;
     align-items: center;
-    // .under-bg{
-    //     position: absolute;
-    //     z-index: -1;
-    //     max-height: 82rem;
-    //     overflow: hidden;
-    //     img{
-    //         width: 100%;
-    //     }
-    // }
-    // .under-bg::after{
-    //     content: '';
-    //     position: absolute;
-    //     left: 0;
-    //     top: 0;
-    //     width: 100%;
-    //     height: 100%;
-    //     background-color: rgba($c-main-color, .8);
-    // }
+    @include mobile{
+        height: auto;
+    }
+    .container{
+        display: flex;
+    }
     .w-flex{
         flex-wrap: wrap;
+        @include mobile{
+            display: block;
+        }
         &-middle{
             margin-top: 2rem;
+            overflow: hidden;
+            @include mobile{
+                max-width: 100%;
+                margin-bottom: 2rem;   
+            }
+            img{
+                @include mobile{
+                    height: 50%;
+                    max-width: 100%;
+                    object-fit: cover;
+                }
+            }
             .rect-more-info{
                 background-color: white;
                 font-size: 2rem;
@@ -550,6 +758,246 @@ $c-dark-purple: #002554;
         }
     }
 }
- /* ============
-        mv
+/* ============
+        blog
  ============*/
+ .blog{
+    width: 100%;
+    margin-top: 8rem;
+    &-box{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3rem 0;
+        @include ipadpro{
+            padding: 2rem;
+        }
+        @include mobile{
+            flex-wrap: wrap;
+        }
+    }
+    &-item{
+        width: 100%;
+        max-width: 36rem;
+        overflow: hidden;
+        @include mobile{
+            margin: 1rem 0;
+        }
+        p{
+            color: $c-main-color;
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            span{
+                color: #999999;
+                margin-left: 1rem;
+            }
+        }
+        h3{
+            font-size: 1.6rem;
+            // font-weight: bold;
+            letter-spacing: .1rem;
+        }
+    }
+    &--more{
+        width: 100%;
+        max-width: 18rem;
+        height: 5rem;
+        border: .1rem solid #d3d4d9;
+        text-transform: uppercase;
+        text-decoration: none !important;
+        color: #666666;
+        text-align: center;
+        display: block;
+        margin: 3rem auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+ }
+ .blog--title{
+    font-size: 6.4rem;
+    text-transform: uppercase;
+    color: $c-main-color;
+    font-family: 'Crimson Text', serif;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+    span{
+        display: block;
+        font-size: 2rem;
+        color: $c-gray;
+    }
+}
+/* ============
+        recruit
+ ============*/
+.recruit{
+    width: 100%;
+    &-box{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        @include mobile{
+            display: block;
+            padding: 2rem;
+        }
+        &-i{
+            width: 100%;
+            max-width: 25.6rem;
+            min-height: 25.6rem;
+            border-top: .5rem solid $c-main-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            flex-direction: column;
+            @include ipadpro{
+                margin: 0 1rem;
+            }
+            @include mobile{
+                max-width: 100%;
+                margin: 0;
+            }
+            img{
+
+            }
+            h3{
+                color: #333333;
+                font-weight: bold;
+                font-size: 2rem;
+                margin-top: 3rem
+            }
+        }
+    }
+}
+/* ============
+        footer
+ ============*/
+ .footer{
+    width: 100%;
+    position: relative;
+    .under-bg{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        
+        img{
+            min-height: 46rem;
+            object-fit: cover;
+        }
+    }
+    .under-bg::after{
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: rgba($c-main-color, .8);
+        position: absolute;
+        left: 0;
+        bottom:0;
+    }
+    .end-page{
+        display: flex;
+        // min-height: 10rem;
+        //justify-content: space-between;
+        //align-items: center;
+        background-color: #002554;
+        padding: 4.3rem 2rem;
+        @media only screen and (max-width: 767px){
+            padding: 2rem 0;
+            flex-direction: column;
+        }
+        a{
+            margin: 0 2rem;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            display:block;
+            padding: 0 2rem;
+            @media only screen and (max-width: 767px){
+                margin: 1rem 0;
+            }
+        }
+        a>span{
+            width: 1rem;
+            height: 1rem;
+            border: .1rem solid white;
+            background-color: #002554;
+            position: relative;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        a>span::after{
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            border: .1rem solid white;
+            position: absolute;
+            right: 0;
+            background-color: #002554;
+        }
+        a>span::after{
+            transform: translate(.3rem, -.3rem);
+        }
+        .cpy-right{
+            margin: auto 0 auto auto;
+            font-size: 1.4rem;
+            color: white;
+            @media only screen and (max-width: 767px){
+                margin: 1rem 0;
+                padding-left: 2rem;
+            }
+        }
+    }
+ }
+.entry-button{
+    text-decoration: none !important;
+    background-color: #002554;
+    width: 100%;
+    max-width: 36rem;
+    height: 8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2.4rem;
+    color: white;
+    border: .1rem solid #002554;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 9rem auto;
+    @include mobile{
+        width: calc(100% - 40px);
+    }
+}
+/* ============
+        top button
+ ============*/
+.to-top-button{
+    position: fixed;
+    bottom: 10rem;
+    right: 4rem;
+    width: 5rem;
+    height: 5rem;
+    border-bottom: .4rem solid $c-main-color;
+    background-color: $c-main-color;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none !important;
+    transition: .3s ease;
+    i{
+        display: block;
+        font-size: 2.5rem;
+        color: white;
+
+    }
+}
+.to-top-button:hover{
+    background-color: white;
+    i{
+        color: $c-main-color;
+    }
+}
