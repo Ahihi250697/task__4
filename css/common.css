@@ -5,6 +5,13 @@
   font-style: normal;
   src: url("../assets/plugins/fonts/A1MinchoStd-Bold.otf");
 }
+@font-face {
+  font-family: MyWebFont;
+  src: url("../assets/plugins/fonts/A1MinchoStd-Bold.eot");
+  /* IE9 Compat Modes */
+  src: url("../assets/plugins/fonts/A1MinchoStd-Bold.eot?#iefix") format("embedded-opentype"), IE6-IE8 url("../assets/plugins/fonts/A1MinchoStd-Bold.woff") format("woff"), url("../assets/plugins/fonts/A1MinchoStd-Bold.otf") format("truetype");
+  /* Safari, Android, iOS */
+}
 /*==========
   FONTS-FAMILY
     font-family: A1MinChoStd;
@@ -101,7 +108,7 @@
 }
 
 /* ============
-        hambuger
+        subu-menu
  ============*/
 .sub-menu {
   display: none;
@@ -155,14 +162,14 @@
 
 .hambuger.active span:nth-child(1) {
   transform: rotate(45deg);
-  top: unset;
+  top: 2rem;
 }
 .hambuger.active span:nth-child(2) {
   opacity: 0;
 }
 .hambuger.active span:nth-child(3) {
   transform: rotate(-45deg);
-  bottom: unset;
+  bottom: 1.8rem;
 }
 
 /* ============
@@ -192,6 +199,7 @@
   font-weight: bold;
   font-family: A1MinChoStd;
   color: white;
+  letter-spacing: 1.5rem;
 }
 @media screen and (max-width: 1024px) {
   .mv--title {
@@ -397,12 +405,12 @@
   margin-right: 4rem;
 }
 .year-100 .p-rel > div {
-  display: flex;
+  display: block;
   min-height: 30rem;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 6rem 0;
+  padding: 9rem 0;
   background-image: url(../images/img_year.jpg);
   height: 100%;
   max-height: 30rem;
@@ -428,6 +436,7 @@
 .year-100 .p-rel > div span:nth-of-type(1) {
   font-size: 4.5rem;
   font-family: A1MinChoStd;
+  margin-bottom: 3.5rem;
 }
 @media screen and (max-width: 768px) {
   .year-100 .p-rel > div span:nth-of-type(1) {
@@ -438,6 +447,7 @@
 .year-100 .p-rel > div span:nth-of-type(2) {
   font-size: 2rem;
   font-family: "Crimson Text", serif;
+  margin-top: 3.5rem;
 }
 @media screen and (max-width: 768px) {
   .year-100 .p-rel > div span:nth-of-type(2) {
@@ -450,7 +460,7 @@
   height: 0.1rem;
   width: 100%;
   background-image: linear-gradient(to left, white, rgba(255, 255, 255, 0));
-  overflow: unset;
+  overflow: visible;
 }
 .year-100 .p-rel > div hr::after {
   content: "";
@@ -599,8 +609,12 @@
 
 .project-story .w-box-r {
   padding-left: 2%;
+  padding-right: 6rem;
   position: absolute;
   right: 0;
+  top: 0;
+  bottom: 0;
+  align-items: center;
 }
 @media screen and (max-width: 768px) {
   .project-story .w-box-r {
@@ -639,16 +653,23 @@
 .work-style .w-box-r {
   padding-left: 10rem;
   padding-right: 10rem;
+  position: absolute;
+  left: 10%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  align-items: center;
 }
 @media screen and (max-width: 768px) {
   .work-style .w-box-r {
+    position: unset;
     padding-left: 0;
     padding-right: 0;
   }
 }
 .work-style .rect-more-info {
   left: 0;
-  margin-left: 7%;
+  margin-left: 15%;
   bottom: 13rem;
 }
 @media screen and (max-width: 768px) {
@@ -833,6 +854,9 @@
   width: 100%;
   height: 100%;
   left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
   position: absolute;
   transform: skew(45deg) translateX(-100rem);
   background-color: #013e8d;
@@ -912,16 +936,20 @@
 @media screen and (max-width: 768px) {
   .interview .w-flex .w-flex-middle .interview-slide .slider-count {
     bottom: 0;
-    transform: translateY(0%);
+    transform: translateY(30%);
   }
 }
 .interview .w-flex .w-flex-middle .interview-slide .slider-count span {
-  margin: 0 0.2rem;
+  padding: 0 0.4rem;
   font-weight: bold;
   font-size: 1.6rem;
+  display: flex;
 }
 .interview .w-flex .w-flex-middle .interview-slide .slider-count span:nth-of-type(1) {
   color: #013e8d;
+}
+.interview .w-flex .w-flex-middle .interview-slide .slider-count span:nth-of-type(2) {
+  padding-left: 1rem;
 }
 
 .w-flex {
@@ -1017,10 +1045,14 @@
   width: 100%;
   height: 100%;
   left: 0;
+  top: 0;
   position: absolute;
   transform: skew(45deg) translateX(-100rem);
   background-color: #013e8d;
   transition: all 0.5s ease;
+}
+.special .w-flex-middle:hover .rect-more-info {
+  padding-left: 4rem;
 }
 .special .w-flex-middle:hover .rect-more-info::after {
   color: white;
@@ -1080,15 +1112,17 @@
     margin: 1rem auto;
   }
 }
-.blog-item p {
+.blog-item a {
   color: #013e8d;
   font-weight: bold;
   font-size: 1.4rem;
   text-transform: uppercase;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  text-decoration: none;
+  display: block;
 }
-.blog-item p span {
+.blog-item a span {
   color: #999999;
   margin-left: 1rem;
 }
@@ -1100,7 +1134,7 @@
   width: 100%;
   max-width: 18rem;
   height: 5rem;
-  border: 0.1 rem solid #666666;
+  border: 0.1rem solid #666666;
   text-transform: uppercase;
   text-decoration: none !important;
   color: #666666;

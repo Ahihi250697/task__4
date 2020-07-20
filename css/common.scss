@@ -7,7 +7,13 @@
     font-style: normal;
     src: url('../assets/plugins/fonts/A1MinchoStd-Bold.otf');
 }
-
+@font-face {
+    font-family: MyWebFont;
+    src: url('../assets/plugins/fonts/A1MinchoStd-Bold.eot'); /* IE9 Compat Modes */
+    src: url('../assets/plugins/fonts/A1MinchoStd-Bold.eot?#iefix') format('embedded-opentype'),  IE6-IE8 
+         url('../assets/plugins/fonts/A1MinchoStd-Bold.woff') format('woff'), /* Modern Browsers */
+         url('../assets/plugins/fonts/A1MinchoStd-Bold.otf')  format('truetype'); /* Safari, Android, iOS */
+}
 /*==========
   FONTS-FAMILY
     font-family: A1MinChoStd;
@@ -36,7 +42,6 @@ $c-dark-purple: #002554;
     height: 8rem;
     padding: 4rem 5.5rem;
     z-index: 1030;
-
     @include mobile {
         height: 6rem;
         padding: 2rem;
@@ -111,7 +116,7 @@ $c-dark-purple: #002554;
     background-color: black;
 }
 /* ============
-        hambuger
+        subu-menu
  ============*/
 .sub-menu {
     display: none;
@@ -170,7 +175,7 @@ $c-dark-purple: #002554;
 .hambuger.active {
     span:nth-child(1) {
         transform: rotate(45deg);
-        top: unset;
+        top: 2rem;
     }
 
     span:nth-child(2) {
@@ -179,7 +184,7 @@ $c-dark-purple: #002554;
 
     span:nth-child(3) {
         transform: rotate(-45deg);
-        bottom: unset;
+        bottom: 1.8rem;
     }
 }
 
@@ -209,7 +214,7 @@ $c-dark-purple: #002554;
         font-weight: bold;
         font-family: A1MinChoStd;
         color: white;
-
+        letter-spacing: 1.5rem;
         @include ipadpro {
             font-size: 6rem;
         }
@@ -427,12 +432,13 @@ $c-dark-purple: #002554;
     }
 
     .p-rel>div {
-        display: flex;
+        // display: flex;
+        display: block;
         min-height: 30rem;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        padding: 6rem 0;
+        padding: 9rem 0;
         background-image: url(../images/img_year.jpg);
         height: 100%;
         max-height: 30rem;
@@ -447,7 +453,7 @@ $c-dark-purple: #002554;
             display: block;
             text-align: center;
             letter-spacing: .2rem;
-
+            
             @include mobile {
                 position: relative;
                 transform: translateY(0);
@@ -459,7 +465,7 @@ $c-dark-purple: #002554;
         span:nth-of-type(1) {
             font-size: 4.5rem;
             font-family: A1MinChoStd;
-
+            margin-bottom: 3.5rem;
             @include mobile {
                 transform: translateY(0);
                 font-size: 2.5rem;
@@ -469,7 +475,7 @@ $c-dark-purple: #002554;
         span:nth-of-type(2) {
             font-size: 2rem;
             font-family: 'Crimson Text', serif;
-
+            margin-top: 3.5rem;
             @include mobile {
                 transform: translateY(0);
                 font-size: 1.4rem;
@@ -481,7 +487,7 @@ $c-dark-purple: #002554;
             height: .1rem;
             width: 100%;
             background-image: linear-gradient(to left, white, rgba(white, 0));
-            overflow: unset;
+            overflow: visible;
         }
 
         hr::after {
@@ -564,7 +570,7 @@ $c-dark-purple: #002554;
             width: 100%;
             max-width: 35%;
             display: flex;
-
+            
             @include mobile {
                 max-width: 100%;
             }
@@ -618,10 +624,12 @@ $c-dark-purple: #002554;
     .w-box {
         &-r {
             padding-left: 2%;
-            // padding-right: 6rem;
+            padding-right: 6rem;
             position: absolute;
             right: 0;
-
+            top: 0;
+            bottom: 0;
+            align-items: center;
             // max-width: 25%;
             @include mobile {
                 position: unset;
@@ -669,8 +677,14 @@ $c-dark-purple: #002554;
         &-r {
             padding-left: 10rem;
             padding-right: 10rem;
-
+            position: absolute;
+            left: 10%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            align-items: center;
             @include mobile {
+                position: unset;
                 padding-left: 0;
                 padding-right: 0;
             }
@@ -679,7 +693,7 @@ $c-dark-purple: #002554;
 
     .rect-more-info {
         left: 0;
-        margin-left: 7%;
+        margin-left: 15%;
         bottom: 13rem;
 
         @include mobile {
@@ -865,6 +879,9 @@ $c-dark-purple: #002554;
                 width: 100%;
                 height: 100%;
                 left: 0;
+                bottom: 0;
+                right: 0;
+                top: 0;
                 position: absolute;
                 transform: skew(45deg) translateX(-100rem);
                 background-color: $c-main-color;
@@ -949,18 +966,22 @@ $c-dark-purple: #002554;
 
                     @include mobile {
                         bottom: 0;
-                        transform: translateY(0%);
+                        transform: translateY(30%);
 
                     }
 
                     span {
-                        margin: 0 .2rem;
+                        padding: 0 .4rem;
                         font-weight: bold;
                         font-size: 1.6rem;
+                        display: flex;
                     }
 
                     span:nth-of-type(1) {
                         color: $c-main-color;
+                    }
+                    span:nth-of-type(2) {
+                        padding-left: 1rem;
                     }
                 }
             }
@@ -1057,6 +1078,7 @@ $c-dark-purple: #002554;
                 width: 100%;
                 height: 100%;
                 left: 0;
+                top: 0;
                 position: absolute;
                 transform: skew(45deg) translateX(-100rem);
                 background-color: $c-main-color;
@@ -1065,6 +1087,9 @@ $c-dark-purple: #002554;
         }
 
         &-middle:hover {
+            .rect-more-info{
+                padding-left: 4rem;
+            }
             .rect-more-info::after {
                 color: white;
             }
@@ -1127,14 +1152,15 @@ $c-dark-purple: #002554;
             margin: 1rem auto;
         }
 
-        p {
+        a {
             color: $c-main-color;
             font-weight: bold;
             font-size: 1.4rem;
             text-transform: uppercase;
             margin-top: 2rem;
             margin-bottom: 2rem;
-
+            text-decoration: none;
+            display: block;
             span {
                 color: #999999;
                 margin-left: 1rem;
@@ -1152,7 +1178,7 @@ $c-dark-purple: #002554;
         width: 100%;
         max-width: 18rem;
         height: 5rem;
-        border: .1 rem solid #666666;
+        border: .1rem solid #666666;
         text-transform: uppercase;
         text-decoration: none !important;
         color: #666666;

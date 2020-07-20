@@ -3,7 +3,7 @@ $('.interview-slide').on('init', function(event, slick){
 		if(_co < 10){
 			_co = '0' + _co;
 		}	
-        $(this).append('<div class="slider-count"><span class="current">01</span><span>/</span><span class="total">'+ _co+'</span></div>');
+        $(this).append('<div class="slider-count"><span class="current">01</span><span> /</span><span class="total">'+ _co+'</span></div>');
     });
 $('.interview-slide').slick({
 	dots: false,
