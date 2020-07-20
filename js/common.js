@@ -1,4 +1,25 @@
-$('.interview-slide').slick();
+$('.interview-slide').on('init', function(event, slick){
+		var _co = slick.slideCount;
+		if(_co < 10){
+			_co = '0' + _co;
+		}	
+        $(this).append('<div class="slider-count"><span class="current">01</span><span>/</span><span class="total">'+ _co+'</span></div>');
+    });
+$('.interview-slide').slick({
+	dots: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
+});
+$('.interview-slide').on('afterChange', function(event, slick, currentSlide, nextSlide){
+            // finally let's do this after changing slides
+            var _cu = currentSlide;
+            if( _cu < 10){
+            	_cu += 1;
+            	_cu = '0' + _cu;
+            }
+            $('.slider-count .current').html(_cu);
+        });
+
 $('.footer > .under-bg').slick({
     dots: false,
     arrows: false,
@@ -47,7 +68,7 @@ $(window).on('load resize', function() {
 			  slidesToShow: 1,
 			  slidesToScroll: 1,
 			  autoplay: true,
-			  autoplaySpeed: 2000,
+			  autoplaySpeed: 1500,
 			  dots: false,
 			  arrows: false
 			});
@@ -61,11 +82,21 @@ $(window).on('load resize', function() {
     	}	
     }
 });
-
+var _toToIsShow = 0;
 $(window).on('scroll',function(event) {
 	/* Act on the event */
-	
-
+	var _curPage = window.pageYOffset;
+	if(_curPage > 300 && _toToIsShow == 0)
+	{
+		_toToIsShow = -1;
+		$('.to-top-button').addClass('active');
+		$('.header').addClass('active');
+	}
+	if(_curPage == 0){
+		_toToIsShow = 0;
+		$('.to-top-button').removeClass('active');
+		$('.header').removeClass('active');
+	}
 });
 // $('.project').on('beforeChange', function(event, slick, currentSlide, nextSlide){
 //   console.log(nextSlide);
@@ -80,12 +111,16 @@ $('.to-top-button').click(function (event) {
 $('.hambuger').click(function(){
 	var _subMenu = $('.sub-menu');
 	var _headerH = $('.header').innerHeight();
-	console.log(_headerH);
-	$(this).hasClass('active') ? $(this).removeClass('active') : $(this).addClass('active'), _subMenu.css({
-		'margin-top':_headerH+'px',
-		height:'calc(100vh - '+_headerH+'px)',
-
-	}).toggle("400").css({
-		display: 'flex'
-	});
+	if($(this).hasClass('active')){
+		$(this).removeClass('active');
+		_subMenu.css({
+			'padding':_headerH+'px'}).toggle("400");
+	}
+	else{
+		$(this).addClass('active');
+		_subMenu.css({
+			'padding':_headerH+'px'}).toggle("400").css({
+			display: 'flex'
+		});
+	}
 });
