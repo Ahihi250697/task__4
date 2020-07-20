@@ -44,14 +44,17 @@
   }
 }
 .header h1 {
+  margin-right: auto;
+}
+.header h1 a {
   font-family: "Montserrat", sans-serif;
   font-size: 3.6rem;
-  margin-right: auto;
   color: white;
   cursor: pointer;
+  text-decoration: none;
 }
 @media screen and (max-width: 768px) {
-  .header h1 {
+  .header h1 a {
     font-size: 3rem;
   }
 }
@@ -148,16 +151,19 @@
 }
 .hambuger span {
   width: 100%;
-  height: 0.2rem;
+  height: 0.4rem;
   background-color: #013e8d;
   position: absolute;
   transition: all 0.3s ease;
 }
 .hambuger span:nth-child(1) {
-  top: 0.8rem;
+  top: 0rem;
+}
+.hambuger span:nth-child(2) {
+  -ms-transform: translateY(-50%);
 }
 .hambuger span:nth-child(3) {
-  bottom: 0.8rem;
+  bottom: 0rem;
 }
 
 .hambuger.active span:nth-child(1) {
@@ -774,17 +780,17 @@
     min-height: 1rem;
   }
 }
-.interview .w-flex .w-flex-middle span,
 .interview .w-flex .w-flex-middle p {
   display: block;
   width: 100%;
 }
-.interview .w-flex .w-flex-middle span {
+.interview .w-flex .w-flex-middle p:nth-of-type(2) span {
   color: #666666;
   font-size: 1.6rem;
+  margin-right: 2rem;
 }
 @media screen and (max-width: 768px) {
-  .interview .w-flex .w-flex-middle span {
+  .interview .w-flex .w-flex-middle p:nth-of-type(2) span {
     font-size: 1.4rem;
     margin: 1rem 0;
   }
@@ -1118,7 +1124,7 @@
   font-size: 1.4rem;
   text-transform: uppercase;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   text-decoration: none;
   display: block;
 }
@@ -1129,6 +1135,7 @@
 .blog-item h3 {
   font-size: 1.6rem;
   letter-spacing: 0.1rem;
+  line-height: 1.5;
 }
 .blog--more {
   width: 100%;
@@ -1307,12 +1314,11 @@
   }
 }
 .footer .end-page a {
-  margin: 0 2rem;
   text-decoration: none;
   color: white;
   position: relative;
   display: block;
-  padding: 0 2rem;
+  padding: 0 0 0 2rem;
 }
 @media only screen and (max-width: 767px) {
   .footer .end-page a {
