@@ -65,6 +65,7 @@ $(window).on('load resize', function() {
 $(window).on('scroll',function(event) {
 	/* Act on the event */
 	
+
 });
 // $('.project').on('beforeChange', function(event, slick, currentSlide, nextSlide){
 //   console.log(nextSlide);
